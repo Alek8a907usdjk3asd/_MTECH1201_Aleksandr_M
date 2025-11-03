@@ -9,6 +9,7 @@ let fly
 let bomb
 let score = 0
 let n, b;
+let start = 0
 
 
 function preload(){
@@ -21,22 +22,39 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 imageMode(CENTER)
 angleMode(DEGREES);
-noFill()
-stroke(121, 121, 121)
-strokeWeight(5)
 frameRate(5)
+background(255)
+textSize(50)
+noStroke
+fill(215, 15, 25)
+text("Press ENTER to Start", windowWidth/3, windowHeight/3)
+print(console.log)
+}
+
+function keyDown() {
+  if(keyCode === ENTER){
+  set (start == 1)
+  print(console.log)
+
+  }
 
 }
 
+
+
 function draw() {
+  if(start ==1){
+  stroke(121, 121, 121)
+  strokeWeight(5)
+  noFill()
   textSize(24)
   imageMode(CORNER)
-  // background(color(61, 49, 43,));
+
   background(bomb)
-  // image(bomb, width - 598, height - 401)
+ 
   text("score: " + score, 10, 30)
-let n = width * noise(frameCount*0.01)
-let b = height * noise(frameCount*0.01+10)
+n = width * noise(frameCount*0.01)
+b = height * noise(frameCount*0.01+10)
 let u = 360*noise(frameCount*0.01+5)
 push()
 translate(n, b)
@@ -69,12 +87,16 @@ rV= -rV
 
 function mouseClicked() {
   let d = dist(mouseX, mouseY, n, b);
-  if (d < fly/2) {
+  print(d)
+  if (d <100) {
     score++;
-  }
+    print(score)
+  } 
+  
+
+  
 }
-
-
+}
 
 
 
